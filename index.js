@@ -3,7 +3,13 @@ const session = require('express-session');
 const { checkLogin } = require('./middlewares/checkLogin');
 const app = express();
 const port = 3000;
+const item = require('./routes/item');
+const admin = require('./routes/admin');
+const recipient = require('./routes/recipient');
+const transaction = require('./routes/transaction');
+const transaction_item = require('./routes/transaction_item');
 
+app.use(express.static(__dirname + '/public'));
 app.set('view engine','ejs');
 app.use(session({
     secret: 'PStr!n9/P',
@@ -17,12 +23,6 @@ app.use(express.urlencoded({extended:true}));
 app.get('/', checkLogin, function(req, res){
     res.render('./home/home')
 })
-
-const item = require('./routes/item');
-const admin = require('./routes/admin');
-const recipient = require('./routes/recipient');
-const transaction = require('./routes/transaction');
-const transaction_item = require('./routes/transaction_item');
 
 app.use('/admin', admin);
 app.use(checkLogin);

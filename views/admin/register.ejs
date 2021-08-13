@@ -4,19 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Admin Register</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <form action="/admin/register" method="post">
-        <label>Name</label>
-        <input type="text" name="Name" autocomplete="off" required>
-        <br>
-        <label>Username/Email</label>
-        <input type="text" name="Username" autocomplete="off" required>
-        <br>
-        <label>Password</label>
-        <input type="text" name="Password" autocomplete="off" required>
-        <br>
+    <nav id="loginRegisterNavbar">
+        <h3 id="logo">Albert Shop</h3>
+        <ul id="navbarlink">
+            <li>
+                <a href="/admin/register">Register</a>
+            </li>
+            <li>
+                <a href="/admin/login">Login</a>
+            </li>
+        </ul>
+    </nav>
+    <h1 id="title">Register</h1>
+    <form id="formRegLog" action="/admin/register" method="post">
+        <container>
+            <label>Name</label>
+            <input type="text" name="Name" autocomplete="off" required>
+            <br>
+            <label>Username/Email</label>
+            <input type="text" name="Username" autocomplete="off" required>
+            <br>
+            <label>Password</label>
+            <input type="text" name="Password" autocomplete="off" required>
+            <br>
+        </container>
         <button>Register</button>
     </form>
 </body>
