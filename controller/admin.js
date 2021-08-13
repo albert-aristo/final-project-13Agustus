@@ -2,26 +2,31 @@ const { comparePassword } = require('../helpers/bcryptjs');
 const {admin} = require('../models');
 class Controller{
     static loginPage(req, res){
-        res.render('./admin/login')
+        const err = req.query.err ? req.query.err : undefined;
+        res.render('./admin/login', { err });
     } //done
 
     static loginResult(req, res){
         let { username, Password } = req.body
         admin.findOne({where:{email: username}})
         .then((data) => {
-            const checkPassword = comparePassword( Password, data.dataValues.password);
-            if(checkPassword){
-                req.session.user = data.dataValues.name;
-                res.redirect('/');
+            if(data){
+                const checkPassword = comparePassword( Password, data.dataValues.password);
+                if(checkPassword){
+                    req.session.user = data.dataValues.name;
+                    res.redirect('/');
+                }else{
+                    throw new Error('password / email salah')
+                }
             }else{
-                res.send('password/email salah')
+                throw new Error('password / email salah')
             }
         })
         .catch((err) => {
-            if(!err.TypeError){
-                res.send('password/email salah')
+            if(err.message){
+                res.redirect(`/admin/login?err=${err.message}`)
             }else{
-                res.send(err)
+                res.redirect(`/admin/login?err=${err}`)
             }
         })
     }//done
