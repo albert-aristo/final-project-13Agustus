@@ -11,13 +11,11 @@ class Controller{
         .then((data) => {
             const checkPassword = comparePassword( Password, data.dataValues.password);
             if(checkPassword){
-                return admin.update({status: true},{where:{email: username}})
+                req.session.user = data.dataValues.name;
+                res.redirect('/');
             }else{
                 res.send('password/email salah')
             }
-        })
-        .then(() => {
-            res.redirect('/')
         })
         .catch((err) => {
             if(!err.TypeError){
@@ -44,14 +42,9 @@ class Controller{
     }//done
 
     static logout(req, res){
-        admin.update({status: false},{where:{status: true}})
-        .then(() => {
-            res.redirect('/admin/login')
-        })
-        .catch((err) => {
-            res.send('logout Error')
-        })
-    }//done
+        delete req.session.user;
+        res.redirect('/admin/login')
+    }// done
 };
 
 module.exports = Controller;
