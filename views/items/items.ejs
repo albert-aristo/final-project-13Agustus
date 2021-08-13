@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Items</title>
+    <style>
+    table, th, td {
+        border: 1px solid black;
+    }
+    </style>
+</head>
+<body>
+    <a href="/admin/logout">Logout</a>
+    <a href="/item/add">Add item</a>
+    <a href="/item/addSameItem">Add item Sama</a>
+    <a href="/recipient">recipient</a>
+    <a href="/transaction">transaction</a>
+    <table>
+        <tr>
+            <th>No.</th>
+            <th>Name Of Product</th>
+            <th>Category</th>
+            <th>Brand</th>
+            <th>Quantity</th>
+            <th>Cost Of Goods Sold</th>
+            <th>SKU</th>
+            <th>Admin yang input stock</th>
+        </tr>
+        <% for(let a = 0; a < data.length; a++){ %>
+            <tr>
+                <td><%= a+1 %></td>
+                <td><%= data[a].name %></td>
+                <td><%= data[a].category %></td>
+                <td><%= data[a].brand %></td>
+                <td><%= data[a].qty %></td>
+                <td><%= data[a].cost_of_good_sold %></td>
+                <td><%= data[a].sku %></td>
+                <td><%= data[a].admin.name %></td>
+            </tr>
+        <% } %>
+    </table>
+</body>
+</html>

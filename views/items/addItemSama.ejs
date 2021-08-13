@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/item/addSameItem" method="post">
+        <label>Name</label>
+        <select name="ID">
+            <% for(let a = 0; a < data.length; a++){ %>
+            <option value="<%= data[a].id %>"><%= data[a].name %></option>
+            <% } %>
+        </select>
+        <br>
+        <label>Quantity</label>
+        <input type="number" name="QTY">
+        <br>
+        <label>Cost of goods sold</label>
+        <input type="number" name="COGS">
+        <br>
+        <button>Add</button>
+    </form>
+</body>
+</html>
