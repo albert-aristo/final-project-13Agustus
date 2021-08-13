@@ -5,8 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
+<<<<<<< HEAD
     <a href="/admin/register">Register</a>
     <form action="/admin/login" method="post">
         <label>Username/Email</label>
@@ -15,6 +17,32 @@
         <label>Password</label>
         <input type="text" name="Password" autocomplete="off" required>
         <br>
+=======
+    <nav id="loginRegisterNavbar">
+        <h3 id="logo">Albert Shop</h3>
+        <ul id="navbarlink">
+            <li>
+                <a href="/admin/register">Register</a>
+            </li>
+            <li>
+                <a href="/admin/login">Login</a>
+            </li>
+        </ul>
+    </nav>
+    <% if(err){%>
+        <h4 id="errMessage"> <%= err %> </h4>
+    <% } %>
+    <h1 id="title">Login</h1>
+    <form id="formRegLog" action="/admin/login" method="post">
+        <container>
+            <label >Username/Email</label>
+            <input type="text" name="username" autocomplete="off" required>
+            <br>
+            <label>Password</label>
+            <input type="password" name="Password" autocomplete="off" required>
+            <br>
+        </container>
+>>>>>>> 0bbe738231eb06ea1e010cd287c78e59a7d35629
         <button>Login</button>
     </form>
 </body>
