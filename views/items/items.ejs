@@ -12,10 +12,10 @@
     </style>
 </head>
 <body>
-    <a href="/admin/logout">Logout</a>
-    <a href="/item/add">Add item</a>
-    <a href="/item/addSameItem">Add item Sama</a>
-    <a href="/recipient">recipient</a>
+    <a href="/admin/logout">Logout</a> ||
+    <a href="/item/add">Add item</a> ||
+    <a href="/item/addSameItem">Add item Sama</a> ||
+    <a href="/recipient">recipient</a> ||
     <a href="/transaction">transaction</a>
     <table>
         <tr>
@@ -27,6 +27,7 @@
             <th>Cost Of Goods Sold</th>
             <th>SKU</th>
             <th>Admin yang input stock</th>
+            <th>Add Stock</th>
         </tr>
         <% for(let a = 0; a < data.length; a++){ %>
             <tr>
@@ -38,6 +39,7 @@
                 <td><%= data[a].cost_of_good_sold %></td>
                 <td><%= data[a].sku %></td>
                 <td><%= data[a].admin.name %></td>
+                <td><a href="/item/<%= data[a].id %>/addSameItem">Add Stock</a></td>
             </tr>
         <% } %>
     </table>

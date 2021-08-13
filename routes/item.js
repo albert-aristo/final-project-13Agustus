@@ -7,8 +7,8 @@ router.get('/add', Controller.addPage);
 
 router.post('/add', Controller.addResult);
 
-router.get('/addSameItem', Controller.addItemSamaPage);
+router.get('/:id/addSameItem', Controller.addItemSamaPage);
 
-router.post('/addSameItem', Controller.hasilAddItemSama);
+router.post('/:id/addSameItem', Controller.hasilAddItemSama);
 
 module.exports = router;

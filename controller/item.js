@@ -1,8 +1,9 @@
 const { item, admin } = require('../models');
 class Controller{
     static basic(req, res){
-        item.findAll({include: admin})
+        item.findAll({include: admin, order: [['id','ASC']]},)
         .then((data) => {
+            // res.send(data)
             res.render('./items/items', { data })
         })
         .catch((err) => {
@@ -32,8 +33,9 @@ class Controller{
     }//done
 
     static addItemSamaPage(req, res){
-        item.findAll()
+        item.findOne({where: {id: req.params.id}})
         .then((data) => {
+            // res.send(data)
             res.render('./items/addItemSama', { data })
         })
         .catch((err) => {
@@ -42,21 +44,21 @@ class Controller{
     }//done
 
     static hasilAddItemSama(req, res){
-        let jumlah = undefined
-        let hpp = undefined
-        let { ID, QTY, COGS} = req.body
-        item.findOne({where: {id: ID}})
-        .then((data) => {
-            jumlah = data.qty + Number(QTY)
-            hpp = data.cost_of_good_sold + Math.round((data.cost_of_good_sold + COGS) / data.qty)
-            return item.update({qty: jumlah, cost_of_good_sold: hpp}, {where: {id: ID}})
-        })
-        .then(() => {
-            res.redirect('/item')
-        })
-        .catch((err) => {
-            res.send(err)
-        })
+        // let jumlah = undefined
+        // let hpp = undefined
+        // let { ID, QTY, COGS} = req.body
+        // item.findOne({where: {id: ID}})
+        // .then((data) => {
+        //     jumlah = data.qty + Number(QTY)
+        //     hpp = data.cost_of_good_sold + Math.round((data.cost_of_good_sold + COGS) / data.qty)
+        //     return item.update({qty: jumlah, cost_of_good_sold: hpp}, {where: {id: ID}})
+        // })
+        // .then(() => {
+        //     res.redirect('/item')
+        // })
+        // .catch((err) => {
+        //     res.send(err)
+        // })
     }//done
 };
 

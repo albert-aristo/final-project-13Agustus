@@ -8,13 +8,14 @@
 </head>
 <body>
     <form action="/item/addSameItem" method="post">
-        <label>Name</label>
-        <select name="ID">
-            <% for(let a = 0; a < data.length; a++){ %>
-            <option value="<%= data[a].id %>"><%= data[a].name %></option>
-            <% } %>
-        </select>
+        <label>Name</label> :
+        <%= data.name %>
         <br>
+        <label>category</label> :
+        <%= data.category %>
+        <br>
+        <label>brand</label> :
+        <%= data.brand %>
         <label>Quantity</label>
         <input type="number" name="QTY">
         <br>
