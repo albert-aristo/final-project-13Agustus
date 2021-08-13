@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "PStr!n9/P",
+    "database": "Stock-Transaksi-Kantor",
+    "host": "localhost",
+    "dialect": "postgres"
+  }
+}
