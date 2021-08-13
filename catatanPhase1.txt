@@ -1,0 +1,79 @@
+1
+- step awal buat folder yang di butuh kan untuk website
+npm install init -y
+
+2
+- setelah itu lanjut npm install pg ejs express
+pg untuk postgres
+ejs untuk tampilan ejs
+express atur endpoint
+
+3
+- folder yang dibutuh kan selanjutnya
+config => untuk connect bersama database postgres
+isi nya require pg di { Pool }
+terus buat isi yang bisa connect ke pgadmin kita
+const pool = new Pool({ seperti gini
+    user: 'postgres', nama username kita di pgadmin
+    database: 'kostFox', nama database kita yang sudah buat di pgadmin
+    password: 'PStr!n9/P', password
+    host: 'localhost', host ini karena kita pakai di pc ini,jadi isi localhost, kalau di server maka ip server
+    port: 5432 port sesuai apa yang kita sudah tulis di awal, ini kita pakai 5432
+}) terus di export
+
+seeder => untuk insert data row ke table yang ada di database
+migration => untuk membuat table di database
+MVC => models(tempat jalan kan query), controller (class OOP masing masing file yang dibutuh kan) , views (kumpulan EJS)
+
+routes => tempat terima endpoint dan kirim ke controller
+di routes isinya
+const Student = require('../controller/student') (jadi di routes dapat order, kirim ke controller, controller kirim ke models baru return dan kirim ke views)
+const express = require('express')
+const router = express.Router()
+router.get('/', Student.basic) (untuk lanjut ke arah tertentu)
+router.post('/add', Student.addStudent) (untuk bawa isi file dari ejs ke fileSystem)
+harus ingat di export biar nanti di index js bisa dapat panggil filenya
+
+jangan lupa folder .gitignore isi node_modules jadi gk akan ambil data node_modules pada waktu git add .
+
+harus drop dulu baru buat table (lebih baik)
+
+4
+(step step yang dibutuhkan atau harus ada untuk setting express awal)
+-index.js (untuk setting express awal) (ini isi dalam nya)
+const express = require('express') (untuk menggambil express)
+const app = express() () <= ini adalah involke, express di involke biar fitur/function jalan
+const port = 3000 <= untuk ini bebas isi port nya,hanya untuk test (tapi lebih baik pakai 3000 saja karena free)
+
+app.set('view engine','ejs') 
+app.use(express.urlencoded({extended: true}))
+app.get('/', function(req, res){ 
+    res.render()
+})
+
+app.use() ke router lain
+
+app.listen(port, function(){
+    console.log(`ada ${port}`);
+})
+
+terus sisanya di ngarah kan ke tempat folder pakai require
+contoh 
+const teacher = require('./routes/teachers')
+app.use('/students', student) maka dia akan ke sini
+
+
+(sampai habis (step))
+
+untuk minta user isi form yang kosong kita bisa pakai required
+terus lanjut oninvalid = this.setCustomValidity('isi nya) ini untuk tampilin kalau orangnya gk isi
+
+kalau di endpoint ada ? dan string atau apa contoh /?isFat=true
+cara kita dapat isFat=true itu dengan cara req.query maka bisa dapat nya
+
+
+karena kita sudah pakai promise, jadi kita urutan nya itu .then .catch .finally
+untuk then untuk yang betul, catch yang salah, finally wajib akan di jalan kan di akhir
+untuk mewakili callback, kita akan pakai return new Promise((resolve, reject) => {
+	isi resolve untuk involke (nilai yang betul) reject yang error
+})
