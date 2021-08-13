@@ -5,11 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+    table, th, td {
+        border: 1px solid black;
+    }
+    </style>
 </head>
 <body>
-    <form action="/transaction/add" method="post">
-        <label></label>
-        <input type="text" name="">
-    </form>
+    <a href="/admin/logout">Logout</a>
+    <br>
+    <a href="/item">item</a>
+    <br>
+    <a href="/recipient">recipient</a>
+    <br>
+    <a href="/transaction/add">Add transaction</a>
+    <table>
+        <tr>
+            <th>No</th>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th>Date</th>
+            <th>Penerima</th>
+        </tr>
+        <% for(let a = 0; a < data.length; a++){ %>
+        <tr>
+            <td><%= a+1 %></td>
+            <td><%= data[a].item.name %></td>
+            <td><%= data[a].qty %></td>
+            <td><%= data[a].price %></td>
+            <td><%= data[a].total %></td>
+            <td><%= data[a].Transaction.date_of_purchase %></td>
+            <td><%= data[a].Transaction.recipient.name %> dari <%= data[a].Transaction.recipient.company_recipient %></td>
+        </tr>
+        <% } %>
+    </table>
 </body>
 </html>

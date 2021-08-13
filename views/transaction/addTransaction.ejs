@@ -8,25 +8,21 @@
 </head>
 <body>
     <form action="/transaction/add" method="post">
-        <label>Item</label>
-        <select name="item">
-            <% for(let a= 0; a < barang.length; a++){ %>
-            <option value="<%= barang[a].id %>"><%= barang[a].name %></option>
-            <% } %>
-        </select>
-        <label>Quantity</label>
-        <input type="number" name="Qty">
-        <label>Price</label>
-        <input type="number" name="price">
+        <% for(let a = 0; a < barang.length; a++){ %>
+        <input type="checkbox" name="purchaseItem" value="<%= barang[a].id %>">
+        <label><%= barang[a].name %></label> =
+        quantity orderan
+        <input type="number" name="<%= barang[a].id %>" autocomplete="off">
         <br>
-        <label>Discount percentage</label>
-        <input type="number" name="Discount" max="1" min="0">
+        <% } %>
+        <br>
         <label>Penerima</label>
         <select name="Penerima">
             <% for(let a = 0; a < penerima.length; a++){ %>
             <option value="<%= penerima[a].id %>"><%= penerima[a].name %> dari <%= penerima[a].company_recipient %></option>
             <% } %>
         </select>
+        <br>
         <button>Submit</button>
     </form>
 </body>

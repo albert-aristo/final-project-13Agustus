@@ -12,6 +12,7 @@ class Controller{
             const checkPassword = comparePassword( Password, data.dataValues.password);
             if(checkPassword){
                 req.session.user = data.dataValues.name;
+                req.session.idUser = data.dataValues.id
                 res.redirect('/');
             }else{
                 res.send('password/email salah')
